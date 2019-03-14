@@ -1,39 +1,46 @@
-var xx = 1;
-
-var playedReportUrl = 'https://hsreplay.net/analytics/query/card_played_popularity_report/?GameType=ARENA&TimeRange=LAST_14_DAYS';
-var playedReport = {};
-var includedReport = 'https://hsreplay.net/analytics/query/card_included_popularity_report/?GameType=ARENA&TimeRange=LAST_14_DAYS';
-var includedReport = {};
-var cardsUrl = 'https://api.hearthstonejson.com/v1/28855/zhCN/cards.json';
-var cards = {};
+var hsData = new Object();
 
 $(document).ready(function(){
-	$.ajax({
-		type:'GET',
-		url: playedReportUrl,
-		dataType:"jsonp",
-		jsonp:"callback",
-		contentType: "application/json",
-	}).done(function( data ) {
-	});
+	var cardsJsonp = document.createElement("script");
+	cardsJsonp.src = "./statistic/cards.json?callback=onLoadCards";
+	document.body.insertBefore(cardsJsonp, document.body.firstChild);
+
+	var includeJsonp = document.createElement("script");
+	includeJsonp.src = "./statistic/card_include.json?callback=onCardIncludeLoad";
+	document.body.insertBefore(includeJsonp, document.body.firstChild);
+
+	var playedJsonp = document.createElement("script");
+	playedJsonp.src = "./statistic/card_played.json?callback=onCardPlayedLoad";
+	document.body.insertBefore(playedJsonp, document.body.firstChild);
 });
 
-function callback(){
+function onLoadCards(jsonCards){
+	hsData.cards = jsonCards;
+}
+
+function onCardIncludeLoad(jsonCardInclude){
+	hsData.includeCards = jsonCardInclude.series.data;	
+}
+
+function onCardPlayedLoad(jsonCardPlayed){
+	hsData.playedCards = jsonCardPlayed.series.data;
 }
 
 function setFrameToStatistic(){
-	console.log(self.origin);
 	$('#data_frame').attr('src', 'statistic.html');
 	var frame = window.frames[0];
-	frame.postMessage('adfasdfjalksjflkj123k4312343', '*');
+	frame.postMessage(hsData, '*');
 }
 
 function setFrameToCurve(){
 	$('#data_frame').attr('src', 'curve.html');		
+	var frame = window.frames[0];
+	frame.postMessage(hsData, '*');
 }
-
 
 function setFrameToExcept(){
 	$('#data_frame').attr('src', 'except.html');		
+	var frame = window.frames[0];
+	frame.postMessage(hsData, '*');
 }
 
