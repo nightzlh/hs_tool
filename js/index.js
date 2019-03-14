@@ -12,6 +12,8 @@ $(document).ready(function(){
 	var playedJsonp = document.createElement("script");
 	playedJsonp.src = "./statistic/card_played.json?callback=onCardPlayedLoad";
 	document.body.insertBefore(playedJsonp, document.body.firstChild);
+
+	window.addEventListener("message", onFrameMessage, false);
 });
 
 function onLoadCards(jsonCards){
@@ -44,3 +46,8 @@ function setFrameToExcept(){
 	frame.postMessage(hsData, '*');
 }
 
+function onFrameMessage(e){
+	if(e.data === "queryStatistic"){
+		window.frames[0].postMessage(hsData, '*');	
+	}
+}

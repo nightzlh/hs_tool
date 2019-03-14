@@ -1,15 +1,20 @@
-var hsData = new Object();
+var cards = new Object();
+var includeCards = new Object();
+var playedCards = new Object();
+
 $(document).ready(function(){
-	window.addEventListener("message", function(e){
-		console.log("enter listener");
-		hsData = e.data;
-	}, false);
-	loadTable();
+	window.addEventListener("message", onParentMessage, false);
+
+	window.parent.postMessage("queryStatistic", '*');
 });
 
-function loadTable(){
-	var includeCards = hsData.includeCards;	
-	console.log("enter loadTable");
-	console.log(hsData);
-	console.log(includeCards);
+function loadCostExceptionTable(){
+		
+}
+
+function onParentMessage(e){
+	cards = e.data.cards;
+	includeCards = e.data.includeCards;
+	playedCards = e.data.playedCards;
+	loadCostExceptionTable();
 }
