@@ -1,11 +1,20 @@
-#menu{
+#menu {
 	display:block;
 }
-#menu li{
+#menu li {
 	display:inline-block;
 	list-style:none;
 }
-#data_frame{
+#data_frame {
 	width:100vw;
 	height:100vh;
+}
+
+.class_img {
+	width: 150px;
+	height: 150px
+}
+
+#tbl_exception tr {
+	width: 250px;
 }
