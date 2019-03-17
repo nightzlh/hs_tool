@@ -73,18 +73,26 @@ function loadStatisticData(){
 }
 
 function initExceptionTbl(){
-	//for(var classId = 1; classId < 10; ++ classId){
-		var tr = $("<tr></tr>");
-		// class td
-		var classTd = $("<td></td>");
-		var classImg = $("<img/>");
-		classImg.attr("src", "https://hsreplay.net/static/images/mana_crystal.png" );
-		classTd.append(classImg);
-		for(var i = 0; i < 11; ++i){
-			classTd.append($("<td></td>"));
+	for(key in CLASS){
+		if(key === "ALL"){
+			continue;
 		}
-		$("#tbl_exception").append(tr);
-	//}
+		
+		var tr = $("<tr></tr>");
+		var classImg = $("<img/>");
+		classImg.attr("src", CLASS[key].png );
+		var tdImg = $("<td></td>");
+		tdImg.append(classImg);
+		tr.append(tdImg);
+		
+		for(var i = 0; i < 2; ++i){
+			var td = $("<td></td>");
+			td.html("dfd");
+			tr.append(td);	
+		}
+		
+		$("#tbl_exception").append(tr);	
+	}
 }
 
 function onParentMessage(e){
