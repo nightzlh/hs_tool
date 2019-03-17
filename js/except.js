@@ -1,25 +1,14 @@
-var druidPng = "https://hsreplay.net/static/images/class-icons/druid.png";
-var hunterPng = "https://hsreplay.net/static/images/class-icons/hunter.png";
-var magePng = "https://hsreplay.net/static/images/class-icons/mage.png";
-var paladinPng = "https://hsreplay.net/static/images/class-icons/paladin.png";
-var priestPng = "https://hsreplay.net/static/images/class-icons/priest.png";
-var roguePng = "https://hsreplay.net/static/images/class-icons/rogue.png";
-var shamanPng = "https://hsreplay.net/static/images/class-icons/shaman.png";
-var warlockPng = "https://hsreplay.net/static/images/class-icons/warlock.png";
-var warriorPng = "https://hsreplay.net/static/images/class-icons/warrior.png";
-
-
 var CLASS = {
-	ALL : 0,
-	DRUID: 1,
-	HUNTER: 2,
-	MAGE: 3,
-	PALADIN: 4,
-	PRIEST: 5,
-	ROGUE: 6,
-	SHAMAN: 7,
-	WARLOCK: 8,
-	WARRIOR: 9
+	ALL: { id: 0, png: "https://hsreplay.net/static/images/mana_crystal.png" },
+	DRUID: { id: 1, png: "https://hsreplay.net/static/images/class-icons/druid.png" },
+	HUNTER: { id: 2, png: "https://hsreplay.net/static/images/class-icons/hunter.png" },
+	MAGE: { id: 3, png: "https://hsreplay.net/static/images/class-icons/mage.png" },
+	PALADIN: { id: 4, png: "https://hsreplay.net/static/images/class-icons/paladin.png" },
+	PRIEST: { id: 5, png: "https://hsreplay.net/static/images/class-icons/priest.png" },
+	ROGUE: { id: 6, png: "https://hsreplay.net/static/images/class-icons/rogue.png" },
+	SHAMAN: { id: 7, png: "https://hsreplay.net/static/images/class-icons/shaman.png" },
+	WARLOCK: { id: 8, png: "https://hsreplay.net/static/images/class-icons/warlock.png" },
+	WARRIOR: { id: 9, png: "https://hsreplay.net/static/images/class-icons/warrior.png" }
 };
 
 var data = new Object;
@@ -51,16 +40,16 @@ function loadStatisticData(){
 			}
 			includeCards[classId] = cardsByClass;
 		};
-		initIncludedCards(CLASS.ALL, data.includeCards.ALL);
-		initIncludedCards(CLASS.DRUID, data.includeCards.DRUID);
-		initIncludedCards(CLASS.HUNTER, data.includeCards.HUNTER);
-		initIncludedCards(CLASS.MAGE, data.includeCards.MAGE);
-		initIncludedCards(CLASS.PALADIN, data.includeCards.PALADIN);
-		initIncludedCards(CLASS.PRIEST, data.includeCards.PRIEST);
-		initIncludedCards(CLASS.ROGUE, data.includeCards.ROGUE);
-		initIncludedCards(CLASS.SHAMAN, data.includeCards.SHAMAN);
-		initIncludedCards(CLASS.WARLOCK, data.includeCards.WARLOCK);
-		initIncludedCards(CLASS.WARRIOR, data.includeCards.WARRIOR);
+		initIncludedCards(CLASS.ALL.id, data.includeCards.ALL);
+		initIncludedCards(CLASS.DRUID.id, data.includeCards.DRUID);
+		initIncludedCards(CLASS.HUNTER.id, data.includeCards.HUNTER);
+		initIncludedCards(CLASS.MAGE.id, data.includeCards.MAGE);
+		initIncludedCards(CLASS.PALADIN.id, data.includeCards.PALADIN);
+		initIncludedCards(CLASS.PRIEST.id, data.includeCards.PRIEST);
+		initIncludedCards(CLASS.ROGUE.id, data.includeCards.ROGUE);
+		initIncludedCards(CLASS.SHAMAN.id, data.includeCards.SHAMAN);
+		initIncludedCards(CLASS.WARLOCK.id, data.includeCards.WARLOCK);
+		initIncludedCards(CLASS.WARRIOR.id, data.includeCards.WARRIOR);
 
 		var initPlayedCards = function(classId, cards){
 			var cardsByClass = new Array();
@@ -70,21 +59,32 @@ function loadStatisticData(){
 			}
 			playedCards[classId] = cardsByClass;
 		};
-		initPlayedCards(CLASS.ALL, data.playedCards.ALL);
-		initPlayedCards(CLASS.DRUID, data.playedCards.DRUID);
-		initPlayedCards(CLASS.HUNTER, data.playedCards.HUNTER);
-		initPlayedCards(CLASS.MAGE, data.playedCards.MAGE);
-		initPlayedCards(CLASS.PALADIN, data.playedCards.PALADIN);
-		initPlayedCards(CLASS.PRIEST, data.playedCards.PRIEST);
-		initPlayedCards(CLASS.ROGUE, data.playedCards.ROGUE);
-		initPlayedCards(CLASS.SHAMAN, data.playedCards.SHAMAN);
-		initPlayedCards(CLASS.WARLOCK, data.playedCards.WARLOCK);
-		initPlayedCards(CLASS.WARRIOR, data.playedCards.WARRIOR);
+		
+		initPlayedCards(CLASS.ALL.id, data.playedCards.ALL);
+		initPlayedCards(CLASS.DRUID.id, data.playedCards.DRUID);
+		initPlayedCards(CLASS.HUNTER.id, data.playedCards.HUNTER);
+		initPlayedCards(CLASS.MAGE.id, data.playedCards.MAGE);
+		initPlayedCards(CLASS.PALADIN.id, data.playedCards.PALADIN);
+		initPlayedCards(CLASS.PRIEST.id, data.playedCards.PRIEST);
+		initPlayedCards(CLASS.ROGUE.id, data.playedCards.ROGUE);
+		initPlayedCards(CLASS.SHAMAN.id, data.playedCards.SHAMAN);
+		initPlayedCards(CLASS.WARLOCK.id, data.playedCards.WARLOCK);
+		initPlayedCards(CLASS.WARRIOR.id, data.playedCards.WARRIOR);
 }
 
 function initExceptionTbl(){
-	for(var classId = 1; classId < 10; ++ classId){
-	}
+	//for(var classId = 1; classId < 10; ++ classId){
+		var tr = $("<tr></tr>");
+		// class td
+		var classTd = $("<td></td>");
+		var classImg = $("<img/>");
+		classImg.attr("src", "https://hsreplay.net/static/images/mana_crystal.png" );
+		classTd.append(classImg);
+		for(var i = 0; i < 11; ++i){
+			classTd.append($("<td></td>"));
+		}
+		$("#tbl_exception").append(tr);
+	//}
 }
 
 function onParentMessage(e){
