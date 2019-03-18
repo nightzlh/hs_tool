@@ -72,6 +72,23 @@ function loadStatisticData(){
 		initPlayedCards(CLASS.WARRIOR.id, data.playedCards.WARRIOR);
 }
 
+function getCostException(classId, cost){
+	var classCards = includeCards[classId];
+	var sum = 0;
+	for(let classCard of classCards){
+		if (typeof(classCard) === "undefined"){
+			continue;
+		}
+		var card = cards[classCard.dbf_id];
+		if ((cost < 10 && card.cost != cost) || 
+			(cost >= 10 && card.cost < 10) ){
+			continue;	
+		}
+		sum += (classCard.count * classCard.popularity);
+	}
+	return sum / 100.0;
+}
+
 function initExceptionTbl(){
 	for(key in CLASS){
 		if(key === "ALL"){
@@ -81,13 +98,15 @@ function initExceptionTbl(){
 		var tr = $("<tr></tr>");
 		var classImg = $("<img/>");
 		classImg.attr("src", CLASS[key].png );
+		classImg.attr("class", "class_img");
 		var tdImg = $("<td></td>");
 		tdImg.append(classImg);
 		tr.append(tdImg);
 		
-		for(var i = 0; i < 2; ++i){
+		for(var i = 0; i < 11; ++i){
 			var td = $("<td></td>");
-			td.html("dfd");
+			var exception = getCostException(CLASS[key].id, i);	
+			td.html(exception.toPrecision(2));
 			tr.append(td);	
 		}
 		
@@ -98,5 +117,12 @@ function initExceptionTbl(){
 function onParentMessage(e){
 	data = e.data;
 	loadStatisticData();
+	
+	//jsTest();
 	initExceptionTbl();
+}
+
+function jsTest(){	
+	console.log("enter jsTest");
+	getCostException(2, 5);
 }
