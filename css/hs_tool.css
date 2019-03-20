@@ -15,12 +15,60 @@
 	height:25px;
 }
 
-#tbl_exception td{
+#tbl_exception {
+	height:400px;
+}
+
+#tbl_exception td {
 	width: 50px;
 	vertical-align: middle;
-	//border:solid 1px black;
 	text-align:center;
 	vertical-align:middle;
 }
 
+#tbl_exception td:hover {
+	background-color:#00ff00;
+}
 
+.debug {
+	border:1px solid black;
+}
+
+#exception_tbl_container {
+	border: 1px solid black;
+	float: left;
+	height: 400px;
+}
+
+#search_card_container {
+	float: left;
+	margin-left: 30px;
+	height:400px;
+}
+
+#search_card_container table {
+	width: 500px;
+}
+
+#input_search {
+	width:95%;
+	height: 25px;
+}
+
+#btn_add {
+	width: 80%;
+	height: 100%;
+}
+
+#search_table tbody {
+	display: block;
+	height: 320px;
+	overflow-y: scroll;
+}
+
+#search_table thead,
+#search_table tbody tr {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}

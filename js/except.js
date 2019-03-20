@@ -11,7 +11,7 @@ var CLASS = {
 	WARRIOR: { id: 9, png: "https://hsreplay.net/static/images/class-icons/warrior.png" }
 };
 
-var data = new Object;
+var data = new Object();
 var cards = new Array();			// dbfId => {cardClass, cost, id, }
 var includeCards = new Array();		// class => dbf_id => { count, dbf_id, decks, popularity, winrate}
 var playedCards = new Array();		// class => dbf_id => { dbf_id, popularity, total, winrate}
@@ -19,6 +19,7 @@ var playedCards = new Array();		// class => dbf_id => { dbf_id, popularity, tota
 $(document).ready(function(){
 	window.addEventListener("message", onParentMessage, false);
 	window.parent.postMessage("queryStatistic", '*');
+	
 });
 
 function loadStatisticData(){
@@ -117,12 +118,9 @@ function initExceptionTbl(){
 function onParentMessage(e){
 	data = e.data;
 	loadStatisticData();
-	
-	//jsTest();
 	initExceptionTbl();
-}
-
-function jsTest(){	
-	console.log("enter jsTest");
-	getCostException(2, 5);
+	
+	var nameSet = new NameSet(data.cards); 
+	console.log(nameSet.getCount());
+	
 }

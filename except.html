@@ -3,10 +3,12 @@
 <head>
 	<link href="./css/hs_tool.css" rel="stylesheet"></link>
 	<script src="./js/jquery-3.3.1.js"></script>
+	<script src="./js/common.js"></script>
 	<script src="./js/except.js"></script>
 </head>
 <body>
 
+<div id="exception_tbl_container">
 <table id="tbl_exception">
 	<tr>
 		<th class="class_img">职业</th>
@@ -23,6 +25,50 @@
 		<th>10+</th>
 	</tr>	
 </table>
+</div>
+
+<div id="search_card_container" class="debug">
+	<table id="search_input_table" class="debug">
+		<tr>
+			<td class="debug"><input id="input_search" type="text"/></td>
+			<td class="debug"><button id="btn_add">add</button></td>
+		</tr>
+	</table>
+	<table id="search_table">
+		<thead>
+		<tr>
+			<th>卡牌</th>
+			<th>套牌概率</th>
+			<th>张数</th>
+			<th>卡组胜率</th>
+			<th>打出胜率</th>
+			<th>期望</th>
+			<th>移除</th>
+		</tr>
+		</thead>
+		<tbody>
+			<!--<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>
+			<tr><td>dfd</td></tr>--->
+		</tbody>
+	</table>
+</div>
 
 </body>
 </html>
