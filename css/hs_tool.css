@@ -72,3 +72,10 @@
 	width: 100%;
 	table-layout: fixed;
 }
+
+#search_tip_tbl {
+	display: relative;
+	
+	height:320px;	
+	background:#0f5;
+}
