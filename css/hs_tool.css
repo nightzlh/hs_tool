@@ -41,9 +41,10 @@
 }
 
 #search_card_container {
+	position:relative;
 	float: left;
 	margin-left: 30px;
-	height:400px;
+	height:385px;
 }
 
 #search_card_container table {
@@ -60,6 +61,18 @@
 	height: 100%;
 }
 
+#search_table {
+	position: absolute;
+	z-index: 1;
+	opacity:1.0;
+	background:white;
+	border:1px solid black;
+}
+
+#search_table thead {
+	height:30px;
+}
+
 #search_table tbody {
 	display: block;
 	height: 320px;
@@ -74,8 +87,26 @@
 }
 
 #search_tip_tbl {
-	display: relative;
-	
-	height:320px;	
-	background:#0f5;
+	position:absolute;
+	top: 37px;
+	height:330px;	
+	width:500px;
+	background:gray;
+}
+
+.botton_tbl {
+	z-index:-1;
+}
+
+.top_tbl {
+	z-index:1;
+}
+
+#search_tip_list {
+	height: 310px;
+	overflow-y:scroll;
+}
+
+#search_tip_list option:hover {
+	background-color:#00ff00;
 }

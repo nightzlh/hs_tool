@@ -60,7 +60,7 @@ var Statistic = function(data, CLASS) {
 	}
 
 	this.selectByName = function(keyWords){
-		var ret = new Array();
+		var ret = new Map();
 		var iter = self.cards.keys();
 		for(var id = iter.next().value; 
 			typeof(id) != "undefined"; 
@@ -69,7 +69,7 @@ var Statistic = function(data, CLASS) {
 			var card = this.cards.get(id);
 			if (card.name.indexOf(keyWords) > -1) {
 				//console.log(card.name);
-				ret.push(card.dbfId);
+				ret.set(card.dbfId, card.name);
 			}
 		}
 		return ret;
